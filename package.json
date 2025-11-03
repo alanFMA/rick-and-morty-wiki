@@ -33,7 +33,7 @@
   },
   "lint-staged": {
     "*.{ts,tsx}": [
-      "eslint --fix",
+      "next lint",
       "prettier --write"
     ],
     "*.{json,md,css}": [
