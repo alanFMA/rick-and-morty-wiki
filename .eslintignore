@@ -1,0 +1,6 @@
+/node_modules
+/.next
+/src/app/graphql/generated/
+codegen.ts
+*.config.js
+*.config.mjs
