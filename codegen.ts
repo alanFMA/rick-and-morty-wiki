@@ -2,17 +2,26 @@ import { CodegenConfig } from '@graphql-codegen/cli';
 
 const config: CodegenConfig = {
   schema: 'https://rickandmortyapi.com/graphql',
-  documents: 'src/graphql/**/*.graphql',
+
+  // 1. CAMINHO CORRETO (com 'src/')
+  documents: 'src/app/graphql/**/*.graphql',
+
   generates: {
-    'src/graphql/generated/': {
-      preset: 'client',
+    // 2. CAMINHO CORRETO (com 'src/')
+    'src/app/graphql/generated/types.ts': {
       plugins: [
         'typescript',
         'typescript-operations',
-        'typescript-react-apollo',
+        '@graphql-codegen/typescript-react-apollo',
       ],
-      presetConfig: {
-        gqlTagName: 'gql',
+      config: {
+        skipTypename: true,
+        preResolveTypes: true,
+        useTypeImports: true,
+        gqlImport: 'graphql-tag',
+        withHOC: false,
+        withComponent: false,
+        withHooks: true,
       },
     },
   },
